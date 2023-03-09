@@ -166,8 +166,8 @@ export default function Appbar() {
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
+          <Box sx={{ display: { xs: "none", md: "flex",alignItems:"center" } }}>
+            <IconButton sx={{width:"37px",height:"37px"}}
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
@@ -176,7 +176,7 @@ export default function Appbar() {
                 <MailIcon />
               </Badge>
             </IconButton>
-            <IconButton
+            <IconButton sx={{width:"37px",height:"37px"}}
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
@@ -196,7 +196,7 @@ export default function Appbar() {
               aria-haspopup="true"
               color="inherit"
             >
-              <Avatar alt="housam" src="./images\housam.jpg" />
+              <Avatar sx={{width:"37px",height:"37px"}} alt="housam" src="./images\housam.jpg" />
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
