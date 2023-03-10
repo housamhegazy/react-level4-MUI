@@ -1,7 +1,8 @@
-import { Box } from "@mui/material";
+import { Box, MenuItem } from "@mui/material";
 import React from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
+import Menu from "@mui/material/Menu";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -16,6 +17,15 @@ import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
+
+
+//heart (add to fovarite)
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
+
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 // card header
 // card media
 //card content
@@ -23,6 +33,17 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 //card collapse
 
 export default function Posts() {
+    //icon menu
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+
+    //boxes array
   const myCards = [
     {
       letter: "A",
@@ -66,46 +87,63 @@ export default function Posts() {
     },
   ];
   return (
-    <Box sx={{ flexGrow: "2" }}>
+    <Box sx={{ flexGrow: "3" }}>
       {myCards.map((card) => {
         return (
+          <>
           <Card key={card.title} sx={{ maxWidth: 345, mx: "auto", my: 5 }}>
-            <CardHeader
-              avatar={
-                <Avatar sx={{ bgcolor: card.color }} aria-label="recipe">
-                  {card.letter}
-                </Avatar>
-              }
-              action={
-                <IconButton aria-label="settings">
-                  <MoreVertIcon />
-                </IconButton>
-              }
-              title={card.title}
-              subheader={card.subtitle}
-            />
-            <CardMedia
-              component="img"
-              height="194"
-              image={card.cardImage}
-              alt="Paella dish"
-            />
-            <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                {card.cardinfo}
-              </Typography>
-            </CardContent>
-            <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="share">
-                <ShareIcon />
-              </IconButton>
-            </CardActions>
+                <CardHeader
+                    avatar={<Avatar sx={{ bgcolor: card.color }} aria-label="recipe">
+                        {card.letter}
+                    </Avatar>}
+                    action={<IconButton
+                        onClick={handleClick}
+                     aria-label="settings">
+                        <MoreVertIcon />
+                    </IconButton>}
+                    title={card.title}
+                    subheader={card.subtitle} />
+                <CardMedia
+                    component="img"
+                    height="194"
+                    image={card.cardImage}
+                    alt="Paella dish" />
+                <CardContent>
+                    <Typography variant="body2" color="text.secondary">
+                        {card.cardinfo}
+                    </Typography>
+                </CardContent>
+                <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                        <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                        <ShareIcon />
+                    </IconButton>
+                </CardActions>
           </Card>
+
+
+            <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                    'aria-labelledby': 'basic-button'
+                }}
+            >
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={handleClose}>My account</MenuItem>
+                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                </Menu>
+                
+                </>
+
+
         );
       })}
+
     </Box>
   );
 }
