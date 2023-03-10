@@ -2,3 +2,13 @@
   margin:0;
   padding: 0;
 }
+
+.border{
+  border:1px solid red
+}
+.mycolor{
+  color:brown;
+}
+.dark .mycolor{
+  color:green;
+}

@@ -3,24 +3,21 @@ import {
   createTheme,
   CssBaseline,
   ThemeProvider,
-  Button,
+ 
   Stack,
-  Divider,
+
   Paper,
+  Typography,
+  Box,
 } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
 import getDesignTokens from "./styles/MuTheme";
 import Appbar from "components/AppBar";
 import { styled } from "@mui/material/styles";
+import Listt from "components/List";
+import Posts from "components/Posts";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
 function App() {
+ 
   const localTheme = localStorage.getItem("localTheme");
   const [mode, setmode] = useState(
     localTheme === null ? "light" : localTheme === "light" ? "light" : "dark"
@@ -35,64 +32,24 @@ function App() {
     );
     setmode(theme.palette.mode === "light" ? "dark" : "light");
   };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="App">
-        <Appbar />
-        <Button
-          onClick={() => {
-            darkmoodFunc();
-          }}
-          variant="contained"
-          color="primary"
-        >
-          toggle mode
-        </Button>
+      <Box className={theme.palette.mode}>
+        <Appbar/>
 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <Stack
-          divider={<Divider orientation="vertical" flexItem />}
-          sx={{ border: "2px solid red" }}
-          direction="row"
-          spacing={3}
-        >
-          <Button>Button 1</Button>
-          <Button>Button 2</Button>
-          <Button>Button 3</Button>
+        <Stack direction="row">
+          <Listt darkmoodFunc={darkmoodFunc} theme={theme} />
+
+          <Posts/>
+        
+
+          <Typography sx={{ flexGrow: "1.5" }} className="border">
+            text 3
+          </Typography>
         </Stack>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <Grid container spacing={2} disableEqualOverflow>
-          <Grid xs={12} sm={6}>
-            <Item sx={{bgcolor:{md:"red"}}}>.....</Item>
-          </Grid>
-          <Grid xs={12} sm={6}>
-            <Item>.....</Item>
-          </Grid>
-          <Grid xs={12} sm={6}>
-            <Item>.....</Item>
-          </Grid>
-          <Grid xs={12} sm={6}>
-            <Item>......</Item>
-          </Grid>
-        </Grid>
-      </div>
+      </Box>
     </ThemeProvider>
   );
 }
