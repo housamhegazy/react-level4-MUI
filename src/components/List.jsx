@@ -77,7 +77,7 @@ export default function Listt({ darkmoodFunc, theme }) {
 
   return (
     <Box
-      sx={{ flexGrow: "2", display: { xs: "none", sm: "block" ,backgroundColor:theme.palette.faveColor.main} }}
+      sx={{ flexGrow: "1.5", display: { xs: "none", sm: "block" ,backgroundColor:theme.palette.faveColor.main} }}
     >
       <List sx={{ position: "fixed" }}>
         {myList.map((item) => {
@@ -91,21 +91,13 @@ export default function Listt({ darkmoodFunc, theme }) {
           );
         })}
 {/* dark mood */}
-        <ListItem>
+        <ListItem disablePadding>
           <ListItemIcon>
-            {theme.palette.mode === "dark" ? <DarkMode /> : <LightMode />}
-          </ListItemIcon>
-          <ListItemText primary={theme.palette.mode} />
-          <Switch
-            edge="end"
-            onChange={() => {
+            <MaterialUISwitch onChange={() => {
               darkmoodFunc();
-            }}
-            inputProps={{
-              "aria-labelledby": "switch-list-label-bluetooth",
-            }}
-            checked = {theme.palette.mode === "dark"}
-          />
+            }} sx={{ m: 1 }} defaultChecked = {theme.palette.mode === "dark"} />
+          </ListItemIcon>
+          <ListItemText sx={{textTransform:"capitalize"}} primary={theme.palette.mode} />
         </ListItem>
       </List>
     </Box>
