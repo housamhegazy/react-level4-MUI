@@ -12,8 +12,8 @@ import StorefrontIcon from "@mui/icons-material/Storefront";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import {  styled, Switch } from "@mui/material";
-export default function Listt({ darkmoodFunc, theme }) {
+import { styled, Switch } from "@mui/material";
+export default function Listt({ darkmoodFunc, theme, showList }) {
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
     height: 34,
@@ -74,7 +74,18 @@ export default function Listt({ darkmoodFunc, theme }) {
 
   return (
     <Box
-      sx={{ flexGrow: "2", display: { xs: "none", sm: "block" ,backgroundColor:theme.palette.faveColor.main} }}
+      sx={{
+        flexGrow: {
+          xs: 1,
+          lg: 3,
+        },
+        display: {
+          xs: showList,
+          md: "block",
+        },
+        backgroundColor: theme.palette.faveColor.main
+      }}
+      className="myList"
     >
       <List sx={{ position: "fixed" }}>
         {myList.map((item) => {
@@ -87,14 +98,21 @@ export default function Listt({ darkmoodFunc, theme }) {
             </ListItem>
           );
         })}
-{/* dark mood */}
+        {/* dark mood */}
         <ListItem disablePadding>
           <ListItemIcon>
-            <MaterialUISwitch onChange={() => {
-              darkmoodFunc();
-            }} sx={{ m: 1 }} defaultChecked = {theme.palette.mode === "dark"} />
+            <MaterialUISwitch
+              onChange={() => {
+                darkmoodFunc();
+              }}
+              sx={{ m: 1 }}
+              defaultChecked={theme.palette.mode === "dark"}
+            />
           </ListItemIcon>
-          <ListItemText sx={{textTransform:"capitalize"}} primary={theme.palette.mode} />
+          <ListItemText
+            sx={{ textTransform: "capitalize" }}
+            primary={theme.palette.mode}
+          />
         </ListItem>
       </List>
     </Box>

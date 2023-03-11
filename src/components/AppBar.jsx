@@ -56,7 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Appbar() {
+export default function Appbar({ setshowList, showList }) {
   const [showMobilemenu, setshowMobilemenu] = useState(false);
   const rerfmenuMobile = useRef(null);
 
@@ -136,97 +136,95 @@ export default function Appbar() {
   );
 
   return (
-
-      <AppBar position="sticky">
-        <Toolbar>
+    <AppBar position="sticky">
+      <Toolbar>
+        <IconButton
+          onClick={() => {
+            setshowList(showList === "none" ? "block" : "none");
+          }}
+          sx={{ display: { md: "none", mr: 2 } }}
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="open drawer"
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography
+          variant="h6"
+          noWrap
+          component="div"
+          sx={{ display: { xs: "none", sm: "block" } }}
+        >
+          H.Hegazy
+        </Typography>
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ "aria-label": "search" }}
+          />
+        </Search>
+        <Box sx={{ flexGrow: 1 }} />
+        <Box sx={{ display: { xs: "none", md: "flex", alignItems: "center" } }}>
           <IconButton
+            sx={{ width: "37px", height: "37px" }}
             size="large"
-            edge="start"
+            aria-label="show 4 new mails"
             color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <Badge badgeContent={4} color="error">
+              <MailIcon />
+            </Badge>
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+          <IconButton
+            sx={{ width: "37px", height: "37px" }}
+            size="large"
+            aria-label="show 17 new notifications"
+            color="inherit"
           >
-            H.Hegazy
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
+            <Badge badgeContent={17} color="error">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <IconButton
+            onClick={() => {
+              setshowMenu(!showMenu);
+            }}
+            ref={rerfmenu}
+            size="large"
+            edge="end"
+            aria-label="account of current user"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <Avatar
+              sx={{ width: "37px", height: "37px" }}
+              alt="housam"
+              src="./images\housam.jpg"
             />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box
-            sx={{ display: { xs: "none", md: "flex", alignItems: "center" } }}
+          </IconButton>
+        </Box>
+        <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <IconButton
+            onClick={() => {
+              setshowMobilemenu(!showMobilemenu);
+            }}
+            ref={rerfmenuMobile}
+            size="large"
+            aria-label="show more"
+            aria-haspopup="true"
+            //   onClick={handleMobileMenuOpen}
+            color="inherit"
           >
-            <IconButton
-              sx={{ width: "37px", height: "37px" }}
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              sx={{ width: "37px", height: "37px" }}
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              onClick={() => {
-                setshowMenu(!showMenu);
-              }}
-              ref={rerfmenu}
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <Avatar
-                sx={{ width: "37px", height: "37px" }}
-                alt="housam"
-                src="./images\housam.jpg"
-              />
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              onClick={() => {
-                setshowMobilemenu(!showMobilemenu);
-              }}
-              ref={rerfmenuMobile}
-              size="large"
-              aria-label="show more"
-              aria-haspopup="true"
-              //   onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-        {renderMobileMenu}
+            <MoreIcon />
+          </IconButton>
+        </Box>
+      </Toolbar>
+      {renderMobileMenu}
       {renderMenu}
-      </AppBar>
-      
- 
+    </AppBar>
   );
 }

@@ -1,14 +1,22 @@
-*{
-  margin:0;
+* {
+  margin: 0;
   padding: 0;
 }
 
-.border{
-  border:1px solid red
+.border {
+  border: 1px solid red;
 }
-.mycolor{
-  color:brown;
-}
-.dark .mycolor{
-  color:green;
+
+@media(max-width:900px){
+  .myList {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+    z-index: 5;
+    min-width: 200px;
+  }
+  .dark .myList{
+    background-color: black;
+  }
 }

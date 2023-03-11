@@ -13,7 +13,8 @@ import Posts from "components/Posts";
 import Rightbar from "components/Rightbar";
 
 function App() {
- 
+ //showlist
+  const [showList, setshowList] = useState("none")
   const localTheme = localStorage.getItem("localTheme");
   const [mode, setmode] = useState(
     localTheme === null ? "light" : localTheme === "light" ? "light" : "dark"
@@ -33,10 +34,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box className={theme.palette.mode}>
-        <Appbar/>
+        <Appbar setshowList={setshowList} showList={showList}/>
 
         <Stack direction="row">
-          <Listt darkmoodFunc={darkmoodFunc} theme={theme} />
+          <Listt darkmoodFunc={darkmoodFunc} theme={theme} showList={showList} />
 
           <Posts/>
         
