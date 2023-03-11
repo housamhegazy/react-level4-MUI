@@ -3,18 +3,14 @@ import {
   createTheme,
   CssBaseline,
   ThemeProvider,
- 
   Stack,
-
-  Paper,
-  Typography,
   Box,
 } from "@mui/material";
 import getDesignTokens from "./styles/MuTheme";
 import Appbar from "components/AppBar";
-import { styled } from "@mui/material/styles";
 import Listt from "components/List";
 import Posts from "components/Posts";
+import Rightbar from "components/Rightbar";
 
 function App() {
  
@@ -44,10 +40,7 @@ function App() {
 
           <Posts/>
         
-
-          <Typography sx={{ flexGrow: "1.5" }} className="border">
-            text 3
-          </Typography>
+          <Rightbar theme={theme}/>
         </Stack>
       </Box>
     </ThemeProvider>

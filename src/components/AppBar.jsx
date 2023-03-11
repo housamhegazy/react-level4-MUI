@@ -154,7 +154,7 @@ export default function Appbar() {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            H.Hegazy
           </Typography>
           <Search>
             <SearchIconWrapper>

@@ -1,21 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
 import InboxIcon from "@mui/icons-material/Inbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
 import ArticleIcon from "@mui/icons-material/Article";
 import GroupsIcon from "@mui/icons-material/Groups";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import { Button, FormControlLabel, styled, Switch } from "@mui/material";
-import { DarkMode, LightMode } from "@mui/icons-material";
+import {  styled, Switch } from "@mui/material";
 export default function Listt({ darkmoodFunc, theme }) {
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
@@ -77,7 +74,7 @@ export default function Listt({ darkmoodFunc, theme }) {
 
   return (
     <Box
-      sx={{ flexGrow: "1.5", display: { xs: "none", sm: "block" ,backgroundColor:theme.palette.faveColor.main} }}
+      sx={{ flexGrow: "2", display: { xs: "none", sm: "block" ,backgroundColor:theme.palette.faveColor.main} }}
     >
       <List sx={{ position: "fixed" }}>
         {myList.map((item) => {
