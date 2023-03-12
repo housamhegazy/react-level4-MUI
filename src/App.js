@@ -5,12 +5,16 @@ import {
   ThemeProvider,
   Stack,
   Box,
+  Fab,
+  Tooltip,
 } from "@mui/material";
 import getDesignTokens from "./styles/MuTheme";
 import Appbar from "components/AppBar";
 import Listt from "components/List";
 import Posts from "components/Posts";
 import Rightbar from "components/Rightbar";
+
+import AddPost from "components/AddPost";
 
 function App() {
  //showlist
@@ -42,6 +46,7 @@ function App() {
           <Posts/>
         
           <Rightbar theme={theme}/>
+          <AddPost/>
         </Stack>
       </Box>
     </ThemeProvider>
