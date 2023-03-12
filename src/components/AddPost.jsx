@@ -82,15 +82,9 @@ export default function AddPost() {
             <VideocamIcon color="success" sx={{ mx: 1 }} />
             <PersonAddIcon color="error" sx={{ mx: 1 }} />
           </Stack>
-          <ButtonGroup sx={{width:"100%",mt:2}} variant="contained">
-            <Button sx={{flexGrow:"1"}}>post</Button>
-            <Button
-              size="small"
-              aria-controls={open ? "split-button-menu" : undefined}
-              aria-expanded={open ? "true" : undefined}
-              aria-label="select merge strategy"
-              aria-haspopup="menu"
-            >
+          <ButtonGroup sx={{ width: "100%", mt: 2 }} variant="contained">
+            <Button sx={{ flexGrow: "1" }}>post</Button>
+            <Button>
               <CalendarMonth />
             </Button>
           </ButtonGroup>
