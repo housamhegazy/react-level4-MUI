@@ -76,8 +76,9 @@ export default function Listt({ darkmoodFunc, theme, showList }) {
     <Box
       sx={{
         flexGrow: {
-          xs: 1,
-          lg: 3,
+          xs: 2,
+          md:3,
+          lg: 12,
         },
         display: {
           xs: showList,
@@ -86,6 +87,7 @@ export default function Listt({ darkmoodFunc, theme, showList }) {
         backgroundColor: theme.palette.faveColor.main
       }}
       className="myList"
+      component="nav"
     >
       <List sx={{ position: "fixed" }}>
         {myList.map((item) => {
@@ -99,19 +101,19 @@ export default function Listt({ darkmoodFunc, theme, showList }) {
           );
         })}
         {/* dark mood */}
-        <ListItem disablePadding>
+        <ListItem disablePadding   sx={{ mt: 1 }}>
           <ListItemIcon>
             <MaterialUISwitch
               onChange={() => {
                 darkmoodFunc();
               }}
-              sx={{ m: 1 }}
+              sx={{ mr: 1 }}
               defaultChecked={theme.palette.mode === "dark"}
             />
           </ListItemIcon>
           <ListItemText
             sx={{ textTransform: "capitalize" }}
-            primary={theme.palette.mode}
+            primary= {`${theme.palette.mode} mood`}
           />
         </ListItem>
       </List>

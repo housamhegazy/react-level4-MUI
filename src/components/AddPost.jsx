@@ -17,7 +17,7 @@ import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import PhotoIcon from "@mui/icons-material/Photo";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import { ArrowDropDown, CalendarMonth } from "@mui/icons-material";
+import { CalendarMonth } from "@mui/icons-material";
 export default function AddPost() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -28,7 +28,7 @@ export default function AddPost() {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
+    width: {xs:"97%",sm:400},
     bgcolor: theme.palette.background.default,
     borderRadius: "10px",
     boxShadow: 24,

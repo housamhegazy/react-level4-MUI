@@ -33,11 +33,14 @@ export default function Rightbar({ theme }) {
       sx={{
         display: showLarg,
         flexGrow: "auto",
+        minWidth:"516px",
         backgroundColor: theme.palette.faveColor.main,
       }}
       pl={2}
+      component="section"
     >
-      <Typography sx={{ fontWeight: "300" }} mt={2} variant="h6">
+     <Box sx={{ position: "fixed" }}>
+     <Typography sx={{ fontWeight: "300" }} mt={2} variant="h6">
         online friends
       </Typography>
       <AvatarGroup sx={{ justifyContent: "center" }} max={5}>
@@ -172,6 +175,7 @@ export default function Rightbar({ theme }) {
           />
         </ListItem>
       </List>
+     </Box>
     </Box>
   );
 }

@@ -7,11 +7,11 @@ import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-
+import { useTheme } from "@mui/system";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { purple } from "@mui/material/colors";
+import { blue, pink, purple } from "@mui/material/colors";
 import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
@@ -29,6 +29,7 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 //card collapse
 
 export default function Posts() {
+  const theme = useTheme();
   //icon menu
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -67,7 +68,7 @@ export default function Posts() {
     },
     {
       letter: "H",
-      color: "red",
+      color: pink[600],
       title: "HOUSAM  ",
       subheader: "September 14, 2016",
       cardImage:
@@ -77,7 +78,7 @@ export default function Posts() {
     },
     {
       letter: "M",
-      color: "grey",
+      color: blue[800],
       title: "MAHMOUD ",
       subheader: "September 14, 2016",
       cardImage:
@@ -87,7 +88,7 @@ export default function Posts() {
     },
     {
       letter: "A",
-      color: purple[500],
+      color: purple[100],
       title: "hegazy ",
       subheader: "September 14, 2016",
       cardImage:
@@ -97,13 +98,19 @@ export default function Posts() {
     },
   ];
   return (
-    <Box sx={{ flexGrow: "3" }}>
+    <Box sx={{ flexGrow: "3" }} component="main">
       {myCards.map((card) => {
         return (
-          <Card key={card.title} sx={{ maxWidth: 345, mx: "auto", my: 5 }}>
+          <Card key={card.title} sx={{ maxWidth: {xs:"97%",sm:444}, mx: "auto", my: 5 }}>
             <CardHeader
               avatar={
-                <Avatar sx={{ bgcolor: card.color }} aria-label="recipe">
+                <Avatar
+                  sx={{
+                    bgcolor: card.color,
+                    color: theme.palette.getContrastText(card.color),
+                  }}
+                  aria-label="recipe"
+                >
                   {card.letter}
                 </Avatar>
               }
@@ -136,7 +143,7 @@ export default function Posts() {
               <IconButton aria-label="share">
                 <ShareIcon />
               </IconButton>
-              <Box sx={{ flexGrow: "1" }}/>
+              <Box sx={{ flexGrow: "1" }} />
               <Checkbox
                 {...label}
                 icon={<BookmarkBorderIcon />}

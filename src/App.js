@@ -5,8 +5,7 @@ import {
   ThemeProvider,
   Stack,
   Box,
-  Fab,
-  Tooltip,
+  Divider,
 } from "@mui/material";
 import getDesignTokens from "./styles/MuTheme";
 import Appbar from "components/AppBar";
@@ -17,8 +16,8 @@ import Rightbar from "components/Rightbar";
 import AddPost from "components/AddPost";
 
 function App() {
- //showlist
-  const [showList, setshowList] = useState("none")
+  //showlist
+  const [showList, setshowList] = useState("none");
   const localTheme = localStorage.getItem("localTheme");
   const [mode, setmode] = useState(
     localTheme === null ? "light" : localTheme === "light" ? "light" : "dark"
@@ -38,15 +37,18 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box className={theme.palette.mode}>
-        <Appbar setshowList={setshowList} showList={showList}/>
+        <Appbar setshowList={setshowList} showList={showList} />
 
-        <Stack direction="row">
-          <Listt darkmoodFunc={darkmoodFunc} theme={theme} showList={showList} />
+        <Stack
+          divider={<Divider orientation="vertical" flexItem />}
+          direction="row"
+        >
+          <Listt {...{ darkmoodFunc, theme, showList }} />
 
-          <Posts/>
-        
-          <Rightbar theme={theme}/>
-          <AddPost/>
+          <Posts />
+
+          <Rightbar theme={theme} />
+          <AddPost />
         </Stack>
       </Box>
     </ThemeProvider>
